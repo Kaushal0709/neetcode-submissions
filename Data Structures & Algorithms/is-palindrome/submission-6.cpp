@@ -1,21 +1,15 @@
 class Solution {
 public:
-    int longestConsecutive(vector<int>& nums) {
-        if(nums.size()==0) return 0;
-        unordered_set<int> numSet(nums.begin(),nums.end());
-        int longest = 0;
-        for(auto num:nums){
-            if(numSet.find(num-1)==numSet.end()){
-                int length=1;
-                while(numSet.find(num+length)!=numSet.end()) length+=1;
-                longest = max(longest,length);
-
-            }
-
+    bool isPalindrome(string s) {
+        int l = 0; int r = s.size()-1;
+        while(l<r){
+            while(!isalnum(s[l])) l++;
+            while(!isalnum(s[r])) r--;
+            if(l<r&&tolower(s[l])!=tolower(s[r])) return false;
+            l++;r--;
         }
-        return longest;
-
-
+        return true;
         
     }
+
 };
